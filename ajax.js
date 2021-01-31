@@ -29,6 +29,7 @@ $("#huyen").on("change", function () {
   });
 });
 $(document).ready(function(){
+  console.log('xxx');
   $('#uploadForm').ajaxForm({
     target:'#imagesPreview',
     beforeSubmit:function(){

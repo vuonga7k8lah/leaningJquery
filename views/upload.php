@@ -1,8 +1,8 @@
 <div>
-    <form method="post" id="uploadForm" enctype="multipart/form-data" >
+    <form method="post" id="uploadForm" enctype="multipart/form-data" onsubmit="return false">
         <input type="file" name="images[]" id="images" multiple >
         <div></div>
-        <input type="submit" name=" " value="UPLOAD" style="margin-top: 10px"/>
+        <button onclick="upload()">Gửi</button>
     </form>
 
     <!-- display upload status -->
