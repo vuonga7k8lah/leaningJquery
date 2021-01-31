@@ -21,7 +21,7 @@ switch($action){
 }
 require_once "footer.php";
 echo 'hihi';
-
+echo 'sahjdsahjdasdahsd';
 //$data=file_get_contents(scandir(getcwd())[4]);
 
 
