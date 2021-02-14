@@ -11,7 +11,7 @@
           href="./style.css">
     <style>
         #content {
-            width: 400px;
+            width: 800px;
             margin: 20px auto;
         }
     </style>

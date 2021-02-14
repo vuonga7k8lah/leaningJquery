@@ -68,7 +68,7 @@ $(document).ready(function(){
           var src = response[index];
 
           // Add img element in <div id='preview'>
-          $('#preview').append('<img src="'+src+'" width="200px;" height="200px">');
+          $('#preview').append('<img src="' + src + '" width="200px;" height="200px">');
         }
 
       }
@@ -76,4 +76,31 @@ $(document).ready(function(){
 
   });
 
+});
+$("#login").click(function (event) {
+  event.preventDefault();
+  let username = $('input[name="username"]').val();
+  let password = $('input[name="password"]').val();
+  $.ajax({
+    type: "POST", //kiểu post
+    url: "handleLogin.php",
+    data: {username: username, password: password},
+    success: function (data) {
+      alert(data);
+    },
+  });
+});
+$("#register").click(function (event) {
+  event.preventDefault();
+  let username1 = $('#username1').val();
+  let name = $('#name').val();
+  let password1 = $('#password1').val();
+  $.ajax({
+    type: "POST", //kiểu post
+    url: "handleRegister.php",
+    data: {username1: username1, password1: password1, name: name},
+    success: function (data) {
+      alert(data);
+    },
+  });
 });

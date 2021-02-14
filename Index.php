@@ -17,7 +17,10 @@ switch($action){
             break;   
         case ($action==="Upload"):
             require_once 'views/upload.php';
-            break;    
+            break;
+	case ($action==="login"):
+		require_once 'views/login.php';
+		break;
 }
 require_once "footer.php";
 //$data=file_get_contents(scandir(getcwd())[4]);
