@@ -1,15 +1,9 @@
 <div>
-    <form method="post" id="uploadForm" enctype="multipart/form-data" onsubmit="return false">
-        <input type="file" name="images[]" id="images" multiple >
-        <div></div>
-        <button onclick="upload()">Gửi</button>
+    <form method='post' action='' enctype="multipart/form-data">
+        <input type="file" id='files' name="files[]" multiple><br>
+        <input type="button" id="submit" value='Upload'>
     </form>
 
-    <!-- display upload status -->
-    <div id="uploadStatus"></div>
-
-    <!-- gallery view of uploaded images -->
-    <div class="gallery" id="imagesPreview">
-
-    </div>
+    <!-- Preview -->
+    <div id='preview'></div>
 </div>

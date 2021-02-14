@@ -20,9 +20,6 @@ switch($action){
             break;    
 }
 require_once "footer.php";
-echo 'hihi';
-echo 'hihi111';
-
 //$data=file_get_contents(scandir(getcwd())[4]);
 
 

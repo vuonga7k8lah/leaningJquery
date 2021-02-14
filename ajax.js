@@ -18,7 +18,7 @@ $("#huyen").on("change", function () {
   $.ajax({
     type: "POST", //kiểu post
     url: "handleHuyen.php", //gửi dữ liệu sang trang submit.php
-    data: { huyen: huyen },
+    data: {huyen: huyen},
     success: function (data) {
       if (data == "false") {
         alert("");
@@ -28,19 +28,52 @@ $("#huyen").on("change", function () {
     },
   });
 });
-$(document).ready(function(){
-  console.log('xxx');
-  $('#uploadForm').ajaxForm({
-    target:'#imagesPreview',
-    beforeSubmit:function(){
-      $('#uploadStatus').html('<img src="uploading.gif"/>');
+$("#gui").click(function (event) {
+  event.preventDefault();
+  let title = $('input[name="title"]').val();
+  let email = $('input[name="email"]').val();
+  let content = $('textarea[name="content"]').val();
+  $.ajax({
+    type: "POST", //kiểu post
+    url: "handleMail.php",
+    data: {title: title, email: email, content: content},
+    success: function (data) {
+      alert(data);
     },
-    success:function(){
-      $('#images').val('');
-      $('#uploadStatus').html('');
-    },
-    error:function(){
-      $('#uploadStatus').html('Images upload failed, please try again.');
-    }
   });
+});
+$(document).ready(function(){
+
+  $('#submit').click(function(){
+
+    var form_data = new FormData();
+
+    // Read selected files
+    var totalfiles = document.getElementById('files').files.length;
+    for (var index = 0; index < totalfiles; index++) {
+      form_data.append("files[]", document.getElementById('files').files[index]);
+    }
+  console.log(form_data)
+    // AJAX request
+    $.ajax({
+      url: 'upload.php',
+      type: 'post',
+      data: form_data,
+      dataType: 'json',
+      contentType: false,
+      processData: false,
+      success: function (response) {
+
+        for(var index = 0; index < response.length; index++) {
+          var src = response[index];
+
+          // Add img element in <div id='preview'>
+          $('#preview').append('<img src="'+src+'" width="200px;" height="200px">');
+        }
+
+      }
+    });
+
+  });
+
 });

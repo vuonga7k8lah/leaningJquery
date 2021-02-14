@@ -1,5 +1,7 @@
 <?php
 function connect()
 {
-	return mysqli_connect('localhost', 'root', '', 'hcvn');
+	$connect= mysqli_connect('localhost', 'root', '', 'hcvn');
+	mysqli_set_charset($connect,'UTF8');
+	return $connect;
 }
