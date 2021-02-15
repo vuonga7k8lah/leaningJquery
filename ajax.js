@@ -53,7 +53,6 @@ $(document).ready(function(){
     for (var index = 0; index < totalfiles; index++) {
       form_data.append("files[]", document.getElementById('files').files[index]);
     }
-  console.log(form_data)
     // AJAX request
     $.ajax({
       url: 'upload.php',
@@ -63,12 +62,15 @@ $(document).ready(function(){
       contentType: false,
       processData: false,
       success: function (response) {
-
-        for(var index = 0; index < response.length; index++) {
-          var src = response[index];
-
-          // Add img element in <div id='preview'>
-          $('#preview').append('<img src="' + src + '" width="200px;" height="200px">');
+        if (response.status){
+          let dataIMG=JSON.parse(response.data);
+          for(var index = 0; index < dataIMG.length; index++) {
+            let src = dataIMG[index];
+            // Add img element in <div id='preview'>
+            $('#preview').append('<img src="uploads/' + src + '" width="200px;" height="200px">');
+          }
+        }else {
+          alert(response.data)
         }
 
       }
